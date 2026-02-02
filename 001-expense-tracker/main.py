@@ -11,20 +11,26 @@ while True:
     print("5. Quit")
     choice = input("Choose an option: ")
 
+    # Add expense
     if choice == '1':
         name = input("Enter expense name:")
         amount = input("Enter expense amount:")
         category = ""
+        # show options of existing categories
         while True:
             print("Categories:")
             for index, item in enumerate(categories):
                 print(f"{index+1}. {item}")
             category_num = input("Enter expense category:")
-            if int(category_num) < 0 or int(category_num) > len(categories):
-                print("Invalid Option. Try again!")
-            else:
-                category = categories[int(category_num)+1]
-                break
+            try:
+                if int(category_num) < 1 or int(category_num) > len(categories):
+                    print("Invalid Option. Try again!")
+                else:
+                    category = categories[int(category_num)-1]
+                    break
+            except ValueError:
+                print("Invalid amount. Please enter number.")
+                continue
 
         expense = {
             'name': name,
@@ -37,7 +43,6 @@ while True:
     elif choice == '2':
         for expense in expenses:
             print(f"Name: {expense['name']} | Amount: {expense['amount']} | Category: {expense['category']}")
-
 
     elif choice == '3':
         total = sum(expense['amount'] for expense in expenses)
@@ -57,6 +62,3 @@ while True:
 
     else:
         print("Invalid option, try again.")
-
-
-
