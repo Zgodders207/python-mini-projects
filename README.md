@@ -1,4 +1,4 @@
-# Python Daily Projects
+# Zac's Python Mini Projects
 
 A collection of small Python projects I'm building to develop my programming skills.
 
